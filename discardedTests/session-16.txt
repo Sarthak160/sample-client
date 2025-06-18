@@ -1,0 +1,142 @@
+Iteration-1
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+  "testing"
+  "github.com/stretchr/testify/mock"
+  clientMocks "github.com/Sarthak160/go-client/client"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify
+
+Test Implementation:
+func TestCheckGoogle_ValidResponse_123(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.MockHTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("Success", nil)
+
+    svc := &Service{Cl: mockHTTPClient}
+
+    // Act
+    svc.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertCalled(t, "GetGoogle")
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+  "testing"
+  "fmt"
+  "github.com/stretchr/testify/mock"
+  clientMocks "github.com/Sarthak160/go-client/client"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify
+
+Test Implementation:
+func TestCheckGoogle_ErrorResponse_456(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.MockHTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("", fmt.Errorf("network error"))
+
+    svc := &Service{Cl: mockHTTPClient}
+
+    // Act
+    svc.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertCalled(t, "GetGoogle")
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+Iteration-2
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+  "testing"
+  "github.com/stretchr/testify/mock"
+  clientMocks "github.com/Sarthak160/go-client/client"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify
+
+Test Implementation:
+func TestCheckGoogle_ValidResponse_789(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.MockHTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("Success", nil)
+
+    getGoogleFunc = func(c *client.HTTPClient) (string, error) {
+        return mockHTTPClient.GetGoogle()
+    }
+
+    svc := &Service{Cl: &client.HTTPClient{}}
+
+    // Act
+    svc.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertCalled(t, "GetGoogle")
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+  "testing"
+  "fmt"
+  "github.com/stretchr/testify/mock"
+  clientMocks "github.com/Sarthak160/go-client/client"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify
+
+Test Implementation:
+func TestCheckGoogle_ErrorResponse_890(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.MockHTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("", fmt.Errorf("network error"))
+
+    getGoogleFunc = func(c *client.HTTPClient) (string, error) {
+        return mockHTTPClient.GetGoogle()
+    }
+
+    svc := &Service{Cl: &client.HTTPClient{}}
+
+    // Act
+    svc.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertCalled(t, "GetGoogle")
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+

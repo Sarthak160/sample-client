@@ -1,0 +1,28 @@
+Iteration-1
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_SuccessAndError_123(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(client.MockHTTPClientInterface)
+    svc := &Service{Cl: mockHTTPClient}
+
+    // Test success scenario
+    mockHTTPClient.On("GetGoogle").Return("Success Response", nil)
+    fmt.Println("Expected Output for Success Scenario:")
+    svc.CheckGoogle()
+    mockHTTPClient.AssertCalled(t, "GetGoogle")
+
+    // Test error scenario
+    mockHTTPClient.On("GetGoogle").Return("", fmt.Errorf("mock error"))
+    fmt.Println("Expected Output for Error Scenario:")
+    svc.CheckGoogle()
+    mockHTTPClient.AssertCalled(t, "GetGoogle")
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+

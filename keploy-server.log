@@ -1,0 +1,434 @@
+
+       ▓██▓▄
+    ▓▓▓▓██▓█▓▄
+     ████████▓▒
+          ▀▓▓███▄      ▄▄   ▄               ▌
+         ▄▌▌▓▓████▄    ██ ▓█▀  ▄▌▀▄  ▓▓▌▄   ▓█  ▄▌▓▓▌▄ ▌▌   ▓
+       ▓█████████▌▓▓   ██▓█▄  ▓█▄▓▓ ▐█▌  ██ ▓█  █▌  ██  █▌ █▓
+      ▓▓▓▓▀▀▀▀▓▓▓▓▓▓▌  ██  █▓  ▓▌▄▄ ▐█▓▄▓█▀ █▓█ ▀█▄▄█▀   █▓█
+       ▓▌                           ▐█▌                   █▌
+        ▓                                   ENTERPRISE EDITION
+
+Keploy Enterprise: 2-dev
+
+2025-06-11T16:21:42.618+0530	INFO	provider/cmd.go:517	Color encoding is disabled
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/health               --> github.com/keploy/enterprise/pkg/server.(*utg).HealthCheck-fm (2 handlers)
+[GIN-debug] GET    /api/userStats            --> github.com/keploy/enterprise/pkg/server.(*utg).GetUserStats-fm (2 handlers)
+[GIN-debug] GET    /api/folder               --> github.com/keploy/enterprise/pkg/server.(*utg).GetFolderStructure-fm (2 handlers)
+[GIN-debug] GET    /api/function             --> github.com/keploy/enterprise/pkg/server.(*utg).GetFunction-fm (2 handlers)
+[GIN-debug] GET    /api/fileFunction         --> github.com/keploy/enterprise/pkg/server.(*utg).GetFileFunction-fm (2 handlers)
+[GIN-debug] GET    /api/findTest             --> github.com/keploy/enterprise/pkg/server.(*utg).FindTest-fm (2 handlers)
+[GIN-debug] POST   /api/generate             --> github.com/keploy/enterprise/pkg/server.(*utg).GenerateTests-fm (2 handlers)
+[GIN-debug] POST   /api/coverage             --> github.com/keploy/enterprise/pkg/server.(*utg).CalculateCoverage-fm (2 handlers)
+[GIN-debug] POST   /api/execute              --> github.com/keploy/enterprise/pkg/server.(*utg).Execute-fm (2 handlers)
+[GIN-debug] POST   /api/closeSession         --> github.com/keploy/enterprise/pkg/server.(*utg).CloseSession-fm (2 handlers)
+[GIN-debug] POST   /api/shutDown             --> github.com/keploy/enterprise/pkg/server.(*utg).Shutdown-fm (2 handlers)
+2025-06-11T16:21:42.620+0530	INFO	server/server.go:44	Starting server	{"address": ":4407"}
+2025-06-11T16:22:36.758+0530	INFO	server/utg.go:527	Generate test request received	{"request": {"sourceFilePath":"/Users/sarthak/Keploy/utg/go-client/service/service.go","rootDir":"/Users/sarthak/Keploy/utg/go-client","additionalPrompt":"","maxIterations":5,"flakiness":false,"functionUnderTest":"","expectedCoverage":0}}
+2025-06-11T16:22:36.763+0530	INFO	server/utg.go:589	Has executable function: true
+2025-06-11T16:22:36.763+0530	INFO	utgenv2/gen.go:195	Session ID: 89a55363-78c1-428f-b35d-001bbfb9dbfe
+2025-06-11T16:22:36.764+0530	INFO	golang/golang.go:32	Installing Go coverage tools...
+2025-06-11T16:22:36.764+0530	INFO	utgenv2/gen.go:255	Running command: go install github.com/axw/gocov/gocov@v1.1.0
+2025-06-11T16:22:36.764+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go install github.com/axw/gocov/gocov@v1.1.0", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:22:37.637+0530	INFO	utgenv2/gen.go:255	Running command: go install github.com/AlekSi/gocov-xml@v1.1.0
+2025-06-11T16:22:37.637+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go install github.com/AlekSi/gocov-xml@v1.1.0", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:22:38.304+0530	INFO	utgenv2/gen.go:255	Running command: go get github.com/stretchr/testify
+2025-06-11T16:22:38.305+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go get github.com/stretchr/testify", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:22:38.877+0530	INFO	utgenv2/gen.go:255	Running command: go install github.com/vektra/mockery/v2@v2.53.2
+2025-06-11T16:22:38.877+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go install github.com/vektra/mockery/v2@v2.53.2", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:22:39.659+0530	INFO	coverage/coverage.go:48	Running test command to generate coverage report	{"cmd": "go mod tidy && go test -tags=test -v ./... -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' && $(go env GOPATH)/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | $(go env GOPATH)/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'"}
+[KRunning tests... Please wait.2025-06-11T16:22:39.659+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v ./... -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' && $(go env GOPATH)/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | $(go env GOPATH)/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+[K2025-06-11T16:22:44.661+0530	INFO	coverage/coverage.go:89	Test command completed in 2.38s
+2025-06-11T16:22:44.661+0530	WARN	utgenv2/gen.go:2040	Error running initial coverage command	{"error": "exit status 1"}
+2025-06-11T16:22:44.661+0530	INFO	utgenv2/gen.go:2044	Initial root coverage failed.
+2025-06-11T16:22:44.661+0530	INFO	utgenv2/gen.go:2047	Attempting package-wise coverage.
+2025-06-11T16:22:44.707+0530	INFO	utgenv2/gen.go:1674	Coverage attempt #1 for package at github.com/Sarthak160/go-client/service
+2025-06-11T16:22:44.707+0530	INFO	coverage/coverage.go:48	Running test command to generate coverage report	{"cmd": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'"}
+[KRunning tests... Please wait.2025-06-11T16:22:44.707+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+[K2025-06-11T16:22:49.708+0530	INFO	coverage/coverage.go:89	Test command completed in 0.50s
+2025-06-11T16:22:49.713+0530	INFO	utgenv2/gen.go:274	Generating tests for file: /Users/sarthak/Keploy/utg/go-client/service/service.go
+2025-06-11T16:22:49.713+0530	INFO	utgenv2/gen.go:315	Language Event	{"event": {"id":"a798887d-fc8c-48a8-b8d3-9254c399bc85","type":"language","timestamp":1749639169713570000,"eventDetails":{"language":"go"}}}
+2025-06-11T16:22:49.713+0530	INFO	utgenv2/gen.go:328	Test Type Event	{"event": {"id":"d4e8c6a5-7726-44ca-ade8-f612d46b6905","type":"testType","timestamp":1749639169713712000,"eventDetails":{"fileName":"service.go"}}}
+2025-06-11T16:22:49.713+0530	INFO	utgenv2/gen.go:337	Initial Coverage Event	{"event": {"id":"95752c16-e482-4150-b183-f014bfc10dc4","type":"initialCoverage","timestamp":1749639169713776000,"eventDetails":{"message":"Calculating initial coverage for service.go"}}}
+2025-06-11T16:22:49.713+0530	INFO	utgenv2/gen.go:360	Calculated Coverage Event	{"event": {"id":"440d0c71-4401-464c-b677-72c2fb2f6048","type":"calculatedCoverage","timestamp":1749639169713810000,"eventDetails":{"sessionId":"89a55363-78c1-428f-b35d-001bbfb9dbfe","file":"/Users/sarthak/Keploy/utg/go-client/service/service.go","fileCoverage":0,"projectCoverage":0,"linesCovered":0,"totalLines":5}}}
+2025-06-11T16:22:49.713+0530	INFO	utgenv2/gen.go:1491	New test file detected. Using default values for golang	{"Line": 1, "Indentation": 1}
+2025-06-11T16:22:53.500+0530	WARN	utgenv2/utils.go:1428	Failed to parse block-based JSON patch	{"error": "invalid character '\\n' in string literal"}
+2025-06-11T16:22:53.501+0530	WARN	utgenv2/gen.go:1857	Failed to apply refactor patch	{"error": "failed to parse block-based JSON patch: invalid character '\\n' in string literal"}
+2025-06-11T16:22:53.501+0530	INFO	utgenv2/gen.go:1883	Mocks creation started
+2025-06-11T16:22:53.501+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+11 Jun 25 16:22 IST INF couldn't read any config file version=v2.53.2
+11 Jun 25 16:22 IST INF Starting mockery dry-run=false version=v2.53.2
+11 Jun 25 16:22 IST INF Using config:  dry-run=false version=v2.53.2
+11 Jun 25 16:22 IST INF Walking dry-run=false version=v2.53.2
+11 Jun 25 16:22 IST WRN DEPRECATION: use of the packages config will be the only way to generate mocks in v3. Please migrate your config to use the packages feature. deprecation-name=packages migration=https://vektra.github.io/mockery/v2.53/migrating_to_packages/ url=https://vektra.github.io/mockery/v2.53/features/#packages-configuration version=v2.53.2
+2025-06-11T16:22:53.774+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:22:53.775+0530	INFO	utgenv2/gen.go:1889	Mocks created
+2025-06-11T16:22:53.775+0530	INFO	utgenv2/gen.go:1805	Skipping AI comment cleaning due to insufficient commented lines
+2025-06-11T16:22:53.973+0530	INFO	utgenv2/gen.go:474	[UTG_PROGRESS] test-generation-ready
+2025-06-11T16:22:53.973+0530	INFO	utgenv2/gen.go:482	Iteration Event	{"event": {"id":"3ef34cad-5546-4022-abe8-3a8c69eded75","type":"iteration","timestamp":1749639173973818000,"eventDetails":{"iteration":1}}}
+2025-06-11T16:22:53.973+0530	INFO	utgenv2/gen.go:489	[UTG_PROGRESS] iteration-1/5
+2025-06-11T16:22:53.973+0530	INFO	utgenv2/gen.go:493	Event Iteration 1
+Current Coverage: %!f(string=0.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+Desired Coverage: %!f(string=80.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+2025-06-11T16:22:53.973+0530	INFO	utgenv2/gen.go:537	Libraries Event	{"event": {"id":"3cc660b4-bc8a-402d-8423-299377620b2f","type":"libraries","timestamp":1749639173973890000,"eventDetails":{"iteration":1,"message":"Checking for libraries used at /Users/sarthak/Keploy/utg/go-client"}}}
+2025-06-11T16:22:53.980+0530	INFO	utgenv2/gen.go:598	Functions Event	{"event": {"id":"6127a600-7ce8-4920-8106-dea5139d36ca","type":"functions","timestamp":1749639173980823000,"eventDetails":{"iteration":1,"message":"Detecting Functions of /Users/sarthak/Keploy/utg/go-client/service/service.go"}}}
+2025-06-11T16:22:53.980+0530	INFO	utgenv2/gen.go:614	Test Generation Info Event	{"event": {"id":"62791da7-d7d9-4667-9323-9474483799d7","type":"testGenerationInfo","timestamp":1749639173980861000,"eventDetails":{"message":"Generating Test cases for /Users/sarthak/Keploy/utg/go-client/service/service.go with go test ","iteration":1,"library":"go test"}}}
+Generating Tests...
+2025-06-11T16:23:03.337+0530	INFO	utgenv2/gen.go:656	Validating new generated tests one by one
+2025-06-11T16:23:03.337+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"625ab98b-0989-49a9-b086-f32080d43a69","type":"testGeneration","timestamp":1749639183337833000,"eventDetails":{"iteration":1,"number":1,"comment":"// TestCheckGoogle_Error_123 tests the behavior of CheckGoogle when GetGoogle returns an error.\n","testDetails":"func TestCheckGoogle_Error_123(t *testing.T) {\n    // Arrange\n    mockHTTPClient := new(clientMocks.HTTPClient)\n    mockHTTPClient.On(\"GetGoogle\").Return(\"\", fmt.Errorf(\"mock error\"))\n\n    service := &Service{\n        Cl: mockHTTPClient,\n    }\n\n    // Act\n    service.CheckGoogle()\n\n    // Assert\n    mockHTTPClient.AssertExpectations(t)\n}\n","importDetails":"import (\n  \"testing\"\n  \"fmt\"\n  clientMocks \"github.com/Sarthak160/go-client/mocks/client\"\n  \"github.com/stretchr/testify/mock\"\n)\n","packageDetails":"go get github.com/stretchr/testify\n","language":"go"}}}
+2025-06-11T16:23:03.356+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:23:03.379+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:23:03.379+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:23:03.406+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:23:03.429+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:23:03.437+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:23:03.437+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"551b8a20-4ee7-4f52-a5e6-0eda509a002c","type":"testRun","timestamp":1749639183437481000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":1,"testNumber":1}}}
+2025-06-11T16:23:03.437+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:23:05.152+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"8b4e6604-d81b-4e6d-911d-b36dd2f95e35","type":"testRunFailure","timestamp":1749639185152210000,"eventDetails":{"iteration":1,"errorMsg":"","testNumber":1}}}
+2025-06-11T16:23:05.152+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:23:05.153+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"0b7d5933-0196-4ec1-b80e-2351c770f79b","type":"testGeneration","timestamp":1749639185153137000,"eventDetails":{"iteration":1,"number":2,"comment":"// TestCheckGoogle_Success_456 tests the behavior of CheckGoogle when GetGoogle returns a valid response.\n","testDetails":"func TestCheckGoogle_Success_456(t *testing.T) {\n    // Arrange\n    mockHTTPClient := new(clientMocks.HTTPClient)\n    mockHTTPClient.On(\"GetGoogle\").Return(\"mock response\", nil)\n\n    service := &Service{\n        Cl: mockHTTPClient,\n    }\n\n    // Act\n    service.CheckGoogle()\n\n    // Assert\n    mockHTTPClient.AssertExpectations(t)\n}\n","importDetails":"import (\n  \"testing\"\n  clientMocks \"github.com/Sarthak160/go-client/mocks/client\"\n  \"github.com/stretchr/testify/mock\"\n)\n","packageDetails":"go get github.com/stretchr/testify\n","language":"go"}}}
+2025-06-11T16:23:05.163+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:23:05.173+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:23:05.173+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:23:05.198+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:23:05.222+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:23:05.230+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:23:05.230+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"62d2ae64-1483-4151-99cb-3b8ca7174952","type":"testRun","timestamp":1749639185230997000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":1,"testNumber":2}}}
+2025-06-11T16:23:05.231+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:23:06.170+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"cd8b7ef1-e521-45fe-a442-37e9e44662ae","type":"testRunFailure","timestamp":1749639186170712000,"eventDetails":{"iteration":1,"errorMsg":"","testNumber":2}}}
+2025-06-11T16:23:06.170+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:23:06.172+0530	INFO	utgenv2/gen.go:799	Run Summary Event	{"event": {"id":"ce3c8bd4-36f7-49c8-8fef-e22285cf59a1","type":"runSummary","timestamp":1749639186172707000,"eventDetails":{"message":"Tests generated in Session 89a55363-78c1-428f-b35d-001bbfb9dbfe in iteration 1","testAdded":0,"testRejected":2,"buildFailure":2,"noCovIncrease":0,"coverageIncreased":0,"isCoverageIncreased":false,"testFilePath":"/Users/sarthak/Keploy/utg/go-client/service/service_test.go","sessionId":"","linesCovered":0,"totalLines":0}}}
+
+<=========================================>
+Tests generated in Session
++-------------------------------+-------------------------------+-------------------------------+
+|       Total Test Cases        |       Test Cases Passed       |       Test Cases Failed       |
++-------------------------------+-------------------------------+-------------------------------+
+|                               |                               |                               |
+|               2               |               0               |               2               |
+|                               |                               |                               |
++-------------------------------+-------------------------------+-------------------------------+
+Discarded tests in session
++------------------------------------------+------------------------------------------+
+|              Build failures              |            No Coverage output            |
++------------------------------------------+------------------------------------------+
+|                                          |                                          |
+|                    2                     |                    0                     |
+|                                          |                                          |
++------------------------------------------+------------------------------------------+
+<=========================================>
+2025-06-11T16:23:06.418+0530	INFO	utgenv2/gen.go:482	Iteration Event	{"event": {"id":"5ef16001-fd42-4757-97d5-a60b9b361e69","type":"iteration","timestamp":1749639186418752000,"eventDetails":{"iteration":2}}}
+2025-06-11T16:23:06.418+0530	INFO	utgenv2/gen.go:489	[UTG_PROGRESS] iteration-2/5
+2025-06-11T16:23:06.418+0530	INFO	utgenv2/gen.go:493	Event Iteration 2
+Current Coverage: %!f(string=0.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+Desired Coverage: %!f(string=80.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+2025-06-11T16:23:06.421+0530	INFO	utgenv2/gen.go:157	Successfully appended failed tests to file	{"file": "/var/folders/_g/s7yplq9x62s2qv4rmdk7z8qh0000gn/T/keploy-utg/failed_tests_session_89a55363-78c1-428f-b35d-001bbfb9dbfe.yaml"}
+2025-06-11T16:23:06.421+0530	INFO	utgenv2/gen.go:537	Libraries Event	{"event": {"id":"5a392c44-7c8f-4c34-b08b-9fbdb236d335","type":"libraries","timestamp":1749639186421412000,"eventDetails":{"iteration":2,"message":"Checking for libraries used at /Users/sarthak/Keploy/utg/go-client"}}}
+2025-06-11T16:23:06.439+0530	INFO	utgenv2/gen.go:598	Functions Event	{"event": {"id":"8f4a9aec-d6ca-456c-8d6c-23249c3d6f5d","type":"functions","timestamp":1749639186439364000,"eventDetails":{"iteration":2,"message":"Detecting Functions of /Users/sarthak/Keploy/utg/go-client/service/service.go"}}}
+2025-06-11T16:23:06.439+0530	INFO	utgenv2/gen.go:614	Test Generation Info Event	{"event": {"id":"f53e57b9-584c-4406-9f45-cc71de39a10f","type":"testGenerationInfo","timestamp":1749639186439479000,"eventDetails":{"message":"Generating Test cases for /Users/sarthak/Keploy/utg/go-client/service/service.go with go test ","iteration":2,"library":"go test"}}}
+Generating Tests...
+2025-06-11T16:23:16.133+0530	INFO	utgenv2/gen.go:656	Validating new generated tests one by one
+2025-06-11T16:23:16.134+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"145a800a-c9a8-4118-9391-715e3e76a0f0","type":"testGeneration","timestamp":1749639196134704000,"eventDetails":{"iteration":2,"number":1,"comment":"// TestCheckGoogle_Error_789 tests the behavior of CheckGoogle when GetGoogle returns an error.\n","testDetails":"func TestCheckGoogle_Error_789(t *testing.T) {\n    // Arrange\n    mockHTTPClient := new(clientMocks.HTTPClient)\n    mockHTTPClient.On(\"GetGoogle\").Return(\"\", fmt.Errorf(\"mock error\"))\n\n    service := &Service{\n        Cl: mockHTTPClient,\n    }\n\n    // Act\n    service.CheckGoogle()\n\n    // Assert\n    mockHTTPClient.AssertExpectations(t)\n}\n","importDetails":"import (\n  \"fmt\"\n  \"testing\"\n  clientMocks \"github.com/Sarthak160/go-client/mocks/client\"\n  \"github.com/stretchr/testify/mock\"\n)\n","packageDetails":"go get github.com/stretchr/testify\n","language":"go"}}}
+2025-06-11T16:23:16.154+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:23:16.173+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:23:16.173+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:23:16.210+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:23:16.232+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:23:16.240+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:23:16.240+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"0c397ac4-18af-40dc-bcb3-ea973e7c2584","type":"testRun","timestamp":1749639196240382000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":2,"testNumber":1}}}
+2025-06-11T16:23:16.240+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:23:17.092+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"04864263-d35e-4aa7-beda-d82e982cd1f9","type":"testRunFailure","timestamp":1749639197092923000,"eventDetails":{"iteration":2,"errorMsg":"","testNumber":1}}}
+2025-06-11T16:23:17.093+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:23:17.094+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"d1dcd33d-742c-44a6-9c86-e24870f35e5d","type":"testGeneration","timestamp":1749639197094533000,"eventDetails":{"iteration":2,"number":2,"comment":"// TestCheckGoogle_Success_890 tests the behavior of CheckGoogle when GetGoogle returns a successful response.\n","testDetails":"func TestCheckGoogle_Success_890(t *testing.T) {\n    // Arrange\n    mockHTTPClient := new(clientMocks.HTTPClient)\n    mockHTTPClient.On(\"GetGoogle\").Return(\"mock response\", nil)\n\n    service := &Service{\n        Cl: mockHTTPClient,\n    }\n\n    // Act\n    service.CheckGoogle()\n\n    // Assert\n    mockHTTPClient.AssertExpectations(t)\n}\n","importDetails":"import (\n  \"fmt\"\n  \"testing\"\n  clientMocks \"github.com/Sarthak160/go-client/mocks/client\"\n  \"github.com/stretchr/testify/mock\"\n)\n","packageDetails":"go get github.com/stretchr/testify\n","language":"go"}}}
+2025-06-11T16:23:17.114+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:23:17.130+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:23:17.130+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:23:17.148+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:23:17.172+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:23:17.180+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:23:17.181+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"e805c3ab-384e-454b-9f74-9e27a2af701b","type":"testRun","timestamp":1749639197181129000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":2,"testNumber":2}}}
+2025-06-11T16:23:17.181+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:23:18.045+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"28fd9ac4-33a4-4654-9ead-9b86aa51db55","type":"testRunFailure","timestamp":1749639198045264000,"eventDetails":{"iteration":2,"errorMsg":"","testNumber":2}}}
+2025-06-11T16:23:18.045+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:23:18.046+0530	INFO	utgenv2/gen.go:799	Run Summary Event	{"event": {"id":"09ded7e2-81f3-44d0-a2e8-c7fed1fa1f7f","type":"runSummary","timestamp":1749639198046318000,"eventDetails":{"message":"Tests generated in Session 89a55363-78c1-428f-b35d-001bbfb9dbfe in iteration 2","testAdded":0,"testRejected":2,"buildFailure":2,"noCovIncrease":0,"coverageIncreased":0,"isCoverageIncreased":false,"testFilePath":"/Users/sarthak/Keploy/utg/go-client/service/service_test.go","sessionId":"","linesCovered":0,"totalLines":0}}}
+
+<=========================================>
+Tests generated in Session
++-------------------------------+-------------------------------+-------------------------------+
+|       Total Test Cases        |       Test Cases Passed       |       Test Cases Failed       |
++-------------------------------+-------------------------------+-------------------------------+
+|                               |                               |                               |
+|               2               |               0               |               2               |
+|                               |                               |                               |
++-------------------------------+-------------------------------+-------------------------------+
+Discarded tests in session
++------------------------------------------+------------------------------------------+
+|              Build failures              |            No Coverage output            |
++------------------------------------------+------------------------------------------+
+|                                          |                                          |
+|                    2                     |                    0                     |
+|                                          |                                          |
++------------------------------------------+------------------------------------------+
+<=========================================>
+2025-06-11T16:23:18.294+0530	INFO	utgenv2/gen.go:482	Iteration Event	{"event": {"id":"f331bd36-97ad-493d-b68e-2655ef4496f2","type":"iteration","timestamp":1749639198294105000,"eventDetails":{"iteration":3}}}
+2025-06-11T16:23:18.294+0530	INFO	utgenv2/gen.go:489	[UTG_PROGRESS] iteration-3/5
+2025-06-11T16:23:18.294+0530	INFO	utgenv2/gen.go:493	Event Iteration 3
+Current Coverage: %!f(string=0.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+Desired Coverage: %!f(string=80.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+2025-06-11T16:23:18.295+0530	INFO	utgenv2/gen.go:157	Successfully appended failed tests to file	{"file": "/var/folders/_g/s7yplq9x62s2qv4rmdk7z8qh0000gn/T/keploy-utg/failed_tests_session_89a55363-78c1-428f-b35d-001bbfb9dbfe.yaml"}
+2025-06-11T16:23:18.295+0530	INFO	utgenv2/gen.go:537	Libraries Event	{"event": {"id":"d01c7029-aeeb-4c53-b938-56f4aa4e7774","type":"libraries","timestamp":1749639198295989000,"eventDetails":{"iteration":3,"message":"Checking for libraries used at /Users/sarthak/Keploy/utg/go-client"}}}
+2025-06-11T16:23:18.315+0530	INFO	utgenv2/gen.go:598	Functions Event	{"event": {"id":"fcd1faed-188f-4510-9b30-d5374d5902df","type":"functions","timestamp":1749639198315111000,"eventDetails":{"iteration":3,"message":"Detecting Functions of /Users/sarthak/Keploy/utg/go-client/service/service.go"}}}
+2025-06-11T16:23:18.315+0530	INFO	utgenv2/gen.go:614	Test Generation Info Event	{"event": {"id":"1dae41bc-4d5f-444a-88de-75ceedaec4fb","type":"testGenerationInfo","timestamp":1749639198315239000,"eventDetails":{"message":"Generating Test cases for /Users/sarthak/Keploy/utg/go-client/service/service.go with go test ","iteration":3,"library":"go test"}}}
+Generating Tests...
+2025-06-11T16:25:01.053+0530	INFO	utgenv2/gen.go:656	Validating new generated tests one by one
+2025-06-11T16:25:01.054+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"ab5bbadf-17fb-41dc-87fa-42805f670e6e","type":"testGeneration","timestamp":1749639301054570000,"eventDetails":{"iteration":3,"number":1,"comment":"// TestCheckGoogle_GetGoogleReturnsError_731 tests the CheckGoogle method\n// for the scenario where the embedded client's GetGoogle method returns an error.\n// It captures standard output to verify that the error is printed as expected.\n// This test assumes that Service.Cl is an interface type (e.g., client.HTTPClient interface)\n// which allows a mock client implementation to be injected. If Service.Cl is a concrete\n// struct pointer (e.g., *client.HTTPClient), this test setup would require refactoring\n// of the Service struct to depend on an interface for proper mocking.\n","testDetails":"func TestCheckGoogle_GetGoogleReturnsError_731(t *testing.T) {\n\t// Arrange\n\tmockHTTPClient := new(clientMocks.HTTPClient)\n\texpectedError := fmt.Errorf(\"mock network error\")\n\tmockHTTPClient.On(\"GetGoogle\").Return(\"\", expectedError)\n\n\t// Assumption: Service.Cl is an interface type (e.g. client.HTTPClient)\n\t// allowing mockHTTPClient to be assigned.\n\tserviceInstance := &Service{\n\t\tCl: mockHTTPClient,\n\t}\n\n\t// Capture standard output\n\toldStdout := os.Stdout\n\tr, w, _ := os.Pipe()\n\tos.Stdout = w\n\n\t// Act\n\tserviceInstance.CheckGoogle()\n\n\t// Restore standard output and read captured content\n\tw.Close()\n\tos.Stdout = oldStdout\n\tvar buf bytes.Buffer\n\t_, errCopy := io.Copy(&buf, r)\n\tif errCopy != nil {\n\t\tt.Fatalf(\"Failed to copy output: %v\", errCopy)\n\t}\n\toutput := buf.String()\n\n\t// Assert\n\tmockHTTPClient.AssertExpectations(t)\n\texpectedOutput := fmt.Sprintf(\"Error: %v\\n\", expectedError)\n\tassert.Equal(t, expectedOutput, output, \"The printed error message should match the expected format.\")\n}\n","language":"go"}}}
+2025-06-11T16:25:01.100+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:25:01.125+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:25:01.125+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:25:01.152+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:25:01.174+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:25:01.657+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:25:01.657+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"bb89763b-c379-4402-9558-be097ba1c804","type":"testRun","timestamp":1749639301657183000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":3,"testNumber":1}}}
+2025-06-11T16:25:01.657+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:25:04.083+0530	WARN	utgenv2/utils.go:718	test error message	{"message": "FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL", "Outputmessage": "FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL\n", "Failmessage": "go: finding module for package gotest.tools/v3/assert\ngo: downloading gotest.tools/v3 v3.5.2\ngo: downloading gotest.tools v2.2.0+incompatible\ngo: found gotest.tools/v3/assert in gotest.tools/v3 v3.5.2\ngo: downloading github.com/google/go-cmp v0.5.9\n# github.com/Sarthak160/go-client/service [github.com/Sarthak160/go-client/service.test]\nservice/service_test.go:22:24: undefined: clientMocks\n"}
+2025-06-11T16:25:04.083+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"e717c4f1-f49c-45a3-adbc-a31598af38bd","type":"testRunFailure","timestamp":1749639304083828000,"eventDetails":{"iteration":3,"errorMsg":"FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL","testNumber":1}}}
+2025-06-11T16:25:04.083+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:25:04.083+0530	WARN	utgenv2/utils.go:718	test error message	{"message": "FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL", "Outputmessage": "FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL\n", "Failmessage": "go: finding module for package gotest.tools/v3/assert\ngo: downloading gotest.tools/v3 v3.5.2\ngo: downloading gotest.tools v2.2.0+incompatible\ngo: found gotest.tools/v3/assert in gotest.tools/v3 v3.5.2\ngo: downloading github.com/google/go-cmp v0.5.9\n# github.com/Sarthak160/go-client/service [github.com/Sarthak160/go-client/service.test]\nservice/service_test.go:22:24: undefined: clientMocks\n"}
+2025-06-11T16:25:04.083+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"f6fb4262-fb06-420d-b630-2c03035deb3c","type":"testGeneration","timestamp":1749639304083948000,"eventDetails":{"iteration":3,"number":2,"comment":"// TestCheckGoogle_GetGoogleReturnsSuccess_824 tests the CheckGoogle method\n// for the scenario where the embedded client's GetGoogle method returns a successful response.\n// It captures standard output to verify that the response is printed as expected.\n// Similar to the error case, this test assumes Service.Cl is an interface type\n// for effective mocking.\n","testDetails":"func TestCheckGoogle_GetGoogleReturnsSuccess_824(t *testing.T) {\n\t// Arrange\n\tmockHTTPClient := new(clientMocks.HTTPClient)\n\texpectedResponse := \"mock google data\"\n\tmockHTTPClient.On(\"GetGoogle\").Return(expectedResponse, nil)\n\n\t// Assumption: Service.Cl is an interface type (e.g. client.HTTPClient)\n\t// allowing mockHTTPClient to be assigned.\n\tserviceInstance := &Service{\n\t\tCl: mockHTTPClient,\n\t}\n\n\t// Capture standard output\n\toldStdout := os.Stdout\n\tr, w, _ := os.Pipe()\n\tos.Stdout = w\n\n\t// Act\n\tserviceInstance.CheckGoogle()\n\n\t// Restore standard output and read captured content\n\tw.Close()\n\tos.Stdout = oldStdout\n\tvar buf bytes.Buffer\n\t_, errCopy := io.Copy(&buf, r)\n\tif errCopy != nil {\n\t\tt.Fatalf(\"Failed to copy output: %v\", errCopy)\n\t}\n\toutput := buf.String()\n\n\t// Assert\n\tmockHTTPClient.AssertExpectations(t)\n\texpectedOutput := fmt.Sprintf(\"Google Response: %s\\n\", expectedResponse)\n\tassert.Equal(t, expectedOutput, output, \"The printed response message should match the expected format.\")\n}\n","language":"go"}}}
+2025-06-11T16:25:04.353+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:25:04.373+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:25:04.374+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:25:04.408+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:25:04.432+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:25:05.326+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:25:05.327+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"b35fed84-39fd-4f48-abbf-70c40f648b31","type":"testRun","timestamp":1749639305327021000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":3,"testNumber":2}}}
+2025-06-11T16:25:05.327+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:25:07.350+0530	WARN	utgenv2/utils.go:718	test error message	{"message": "FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL", "Outputmessage": "FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL\n", "Failmessage": "go: finding module for package gotest.tools/assert\ngo: found gotest.tools/assert in gotest.tools v2.2.0+incompatible\ngo: finding module for package github.com/google/go-cmp/cmp\ngo: finding module for package github.com/pkg/errors\ngo: found github.com/google/go-cmp/cmp in github.com/google/go-cmp v0.7.0\ngo: found github.com/pkg/errors in github.com/pkg/errors v0.9.1\n# github.com/Sarthak160/go-client/service [github.com/Sarthak160/go-client/service.test]\nservice/service_test.go:20:24: undefined: clientMocks\n"}
+2025-06-11T16:25:07.350+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"3998c87c-1666-41eb-8d07-120ea0231d6b","type":"testRunFailure","timestamp":1749639307350818000,"eventDetails":{"iteration":3,"errorMsg":"FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL","testNumber":2}}}
+2025-06-11T16:25:07.350+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:25:07.350+0530	WARN	utgenv2/utils.go:718	test error message	{"message": "FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL", "Outputmessage": "FAIL\tgithub.com/Sarthak160/go-client/service [build failed]\nFAIL\n", "Failmessage": "go: finding module for package gotest.tools/assert\ngo: found gotest.tools/assert in gotest.tools v2.2.0+incompatible\ngo: finding module for package github.com/google/go-cmp/cmp\ngo: finding module for package github.com/pkg/errors\ngo: found github.com/google/go-cmp/cmp in github.com/google/go-cmp v0.7.0\ngo: found github.com/pkg/errors in github.com/pkg/errors v0.9.1\n# github.com/Sarthak160/go-client/service [github.com/Sarthak160/go-client/service.test]\nservice/service_test.go:20:24: undefined: clientMocks\n"}
+2025-06-11T16:25:07.351+0530	INFO	utgenv2/gen.go:799	Run Summary Event	{"event": {"id":"c0fc85c7-7cc2-4f3a-8af5-ab55b2ed7a2c","type":"runSummary","timestamp":1749639307351092000,"eventDetails":{"message":"Tests generated in Session 89a55363-78c1-428f-b35d-001bbfb9dbfe in iteration 3","testAdded":0,"testRejected":2,"buildFailure":2,"noCovIncrease":0,"coverageIncreased":0,"isCoverageIncreased":false,"testFilePath":"/Users/sarthak/Keploy/utg/go-client/service/service_test.go","sessionId":"","linesCovered":0,"totalLines":0}}}
+
+<=========================================>
+Tests generated in Session
++-------------------------------+-------------------------------+-------------------------------+
+|       Total Test Cases        |       Test Cases Passed       |       Test Cases Failed       |
++-------------------------------+-------------------------------+-------------------------------+
+|                               |                               |                               |
+|               2               |               0               |               2               |
+|                               |                               |                               |
++-------------------------------+-------------------------------+-------------------------------+
+Discarded tests in session
++------------------------------------------+------------------------------------------+
+|              Build failures              |            No Coverage output            |
++------------------------------------------+------------------------------------------+
+|                                          |                                          |
+|                    2                     |                    0                     |
+|                                          |                                          |
++------------------------------------------+------------------------------------------+
+<=========================================>
+2025-06-11T16:25:07.609+0530	INFO	utgenv2/gen.go:482	Iteration Event	{"event": {"id":"33d24fd1-fd22-42ba-8642-a7f4fa0b18f4","type":"iteration","timestamp":1749639307609834000,"eventDetails":{"iteration":4}}}
+2025-06-11T16:25:07.610+0530	INFO	utgenv2/gen.go:489	[UTG_PROGRESS] iteration-4/5
+2025-06-11T16:25:07.610+0530	INFO	utgenv2/gen.go:493	Event Iteration 4
+Current Coverage: %!f(string=0.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+Desired Coverage: %!f(string=80.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+2025-06-11T16:25:07.612+0530	INFO	utgenv2/gen.go:157	Successfully appended failed tests to file	{"file": "/var/folders/_g/s7yplq9x62s2qv4rmdk7z8qh0000gn/T/keploy-utg/failed_tests_session_89a55363-78c1-428f-b35d-001bbfb9dbfe.yaml"}
+2025-06-11T16:25:07.612+0530	INFO	utgenv2/gen.go:537	Libraries Event	{"event": {"id":"35caf575-e623-42d7-bff4-e3e9f85e8e74","type":"libraries","timestamp":1749639307612704000,"eventDetails":{"iteration":4,"message":"Checking for libraries used at /Users/sarthak/Keploy/utg/go-client"}}}
+2025-06-11T16:25:07.634+0530	INFO	utgenv2/gen.go:598	Functions Event	{"event": {"id":"87252b1a-633c-4f3d-a3fb-97c6eddc01dc","type":"functions","timestamp":1749639307634079000,"eventDetails":{"iteration":4,"message":"Detecting Functions of /Users/sarthak/Keploy/utg/go-client/service/service.go"}}}
+2025-06-11T16:25:07.634+0530	INFO	utgenv2/gen.go:614	Test Generation Info Event	{"event": {"id":"62d6b920-b11a-4159-8a57-4a25d527148f","type":"testGenerationInfo","timestamp":1749639307634170000,"eventDetails":{"message":"Generating Test cases for /Users/sarthak/Keploy/utg/go-client/service/service.go with go test ","iteration":4,"library":"go test"}}}
+Generating Tests...
+2025-06-11T16:26:48.614+0530	WARN	utgenv2/utils.go:519	Failed to unmarshal YAML for test details. Attempting to unmarshal test cases individually.	{"error": "yaml: line 12: mapping values are not allowed in this context"}
+2025-06-11T16:26:48.616+0530	WARN	utgenv2/utils.go:558	Failed to unmarshal individual test case	{"error": "yaml: line 53: found character that cannot start any token", "testYaml": "- test_behavior: |\n    Tests the CheckGoogle method when the Service's client `Cl` is nil.\n    It verifies that an appropriate error message for a nil client is printed,\n    thanks to the added nil check in the refactored code.\n  test_name: TestCheckGoogle_NilClient_501\n  comment: |\n    // TestCheckGoogle_NilClient_501 tests the scenario where the Service's HTTPClienter field 'Cl'\n    // is nil. This test relies on the refactored CheckGoogle method that includes a nil check.\n  test_code: |\n    func TestCheckGoogle_NilClient_501(t *testing.T) {\n    \t// Arrange\n    \tserviceInstance := &Service{\n    \t\tCl: nil, // Explicitly set Cl to nil\n    \t}\n\n    \t// Capture standard output\n    \toldStdout := os.Stdout\n    \tr, w, _ := os.Pipe()\n    \tos.Stdout = w\n\n    \t// Act\n    \tserviceInstance.CheckGoogle()\n\n    \t// Restore standard output and read captured content\n    \tw.Close()\n    \tos.Stdout = oldStdout\n    \tvar buf bytes.Buffer\n    \t_, errCopy := io.Copy(&buf, r)\n    \trequire.NoError(t, errCopy, \"Failed to copy output from pipe\")\n    \toutput := buf.String()\n\n    \t// Assert\n    \texpectedOutput := \"Error: client is nil\\n\"\n    \tassert.Equal(t, expectedOutput, output, \"The printed error message should indicate a nil client.\")\n    }\n  new_imports_code: |\n    import (\n    \t\"bytes\"\n    \t// \"fmt\" // Not directly used in this test itself\n    \t\"io\"\n    \t\"os\"\n    \t\"testing\"\n\n    \t// No mock imports needed as we are testing the nil client path\n    \t// serviceMocks \"github.com/Sarthak160/go-client/mocks/service\"\n    \t\"github.com/stretchr/testify/assert\"\n    \t// \"github.com/stretchr/testify/mock\"\n    \t\"github.com/stretchr/testify/require\"\n    )\n  library_installation_code: |\n    go get github.com/stretchr/testify/assert github.com/stretchr/testify/require\n\n```"}
+2025-06-11T16:26:48.617+0530	INFO	utgenv2/gen.go:656	Validating new generated tests one by one
+2025-06-11T16:26:48.617+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"0bf8d81d-388c-46fa-aa8b-2ca6abf89dbf","type":"testGeneration","timestamp":1749639408617212000,"eventDetails":{"iteration":4,"number":1,"comment":"// TestCheckGoogle_GetGoogleReturnsError_391 tests the scenario where the GetGoogle method\n// of the HTTPClienter interface returns an error. It checks if the service correctly\n// prints the error message.\n","testDetails":"func TestCheckGoogle_GetGoogleReturnsError_391(t *testing.T) {\n\t// Arrange\n\tmockClient := new(serviceMocks.HTTPClienter)\n\texpectedError := fmt.Errorf(\"simulated network error\")\n\tmockClient.On(\"GetGoogle\").Return(\"\", expectedError)\n\n\tserviceInstance := &Service{\n\t\tCl: mockClient,\n\t}\n\n\t// Capture standard output\n\toldStdout := os.Stdout\n\tr, w, _ := os.Pipe()\n\tos.Stdout = w\n\n\t// Act\n\tserviceInstance.CheckGoogle()\n\n\t// Restore standard output and read captured content\n\tw.Close()\n\tos.Stdout = oldStdout\n\tvar buf bytes.Buffer\n\t_, errCopy := io.Copy(&buf, r)\n\trequire.NoError(t, errCopy, \"Failed to copy output from pipe\")\n\toutput := buf.String()\n\n\t// Assert\n\tmockClient.AssertExpectations(t)\n\texpectedOutput := fmt.Sprintf(\"Error: %v\\n\", expectedError)\n\tassert.Equal(t, expectedOutput, output, \"The printed error message should match the expected format.\")\n}\n","importDetails":"import (\n\t\"bytes\"\n\t\"fmt\"\n\t\"io\"\n\t\"os\"\n\t\"testing\"\n\n\tserviceMocks \"github.com/Sarthak160/go-client/mocks/service\"\n\t\"github.com/stretchr/testify/assert\"\n\t\"github.com/stretchr/testify/mock\"\n\t\"github.com/stretchr/testify/require\"\n)\n","packageDetails":"go get github.com/stretchr/testify/assert github.com/stretchr/testify/mock github.com/stretchr/testify/require\n# mockery is used to generate mocks, ensure it's installed for development:\n# go install github.com/vektra/mockery/v2@latest\n# then run: mockery --name HTTPClienter --dir ./service --output ./mocks/service --outpkg serviceMocks\n","language":"go"}}}
+2025-06-11T16:26:48.659+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:26:48.682+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:26:48.682+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:26:48.709+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:26:48.731+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:26:48.738+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:26:48.738+0530	INFO	utgenv2/injector.go:78	Installing library: go get github.com/stretchr/testify/assert github.com/stretchr/testify/mock github.com/stretchr/testify/require
+2025-06-11T16:26:48.738+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go get github.com/stretchr/testify/assert github.com/stretchr/testify/mock github.com/stretchr/testify/require", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:49.843+0530	INFO	utgenv2/injector.go:78	Installing library: # mockery is used to generate mocks, ensure it's installed for development:
+2025-06-11T16:26:49.843+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "# mockery is used to generate mocks, ensure it's installed for development:", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:49.850+0530	INFO	utgenv2/injector.go:78	Installing library: # go install github.com/vektra/mockery/v2@latest
+2025-06-11T16:26:49.850+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "# go install github.com/vektra/mockery/v2@latest", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:49.857+0530	INFO	utgenv2/injector.go:78	Installing library: # then run: mockery --name HTTPClienter --dir ./service --output ./mocks/service --outpkg serviceMocks
+2025-06-11T16:26:49.857+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "# then run: mockery --name HTTPClienter --dir ./service --output ./mocks/service --outpkg serviceMocks", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:49.861+0530	INFO	utgenv2/gen.go:1261	New Libraries Event	{"event": {"id":"ebe281e8-48d3-46c0-b3bb-3d98a5d1a29b","type":"newLibraries","timestamp":1749639409861005000,"eventDetails":{"libraries":"New Libraries Installed: github.com/stretchr/testify/assert, is, install, run:","iteration":4,"testNumber":1}}}
+2025-06-11T16:26:49.861+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"7bc5946a-5f8b-474a-9f0a-3f040dd6ae0b","type":"testRun","timestamp":1749639409861098000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":4,"testNumber":1}}}
+2025-06-11T16:26:49.861+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:51.702+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"bbabef48-fd88-4d0f-9cb0-d76cd925eb5d","type":"testRunFailure","timestamp":1749639411702555000,"eventDetails":{"iteration":4,"errorMsg":"","testNumber":1}}}
+2025-06-11T16:26:51.702+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:26:51.702+0530	INFO	utgenv2/injector.go:129	Uninstalling library: github.com/stretchr/testify/assert
+2025-06-11T16:26:51.702+0530	INFO	utgenv2/injector.go:135	Skipping uninstallation of required package:	{"package": "github.com/stretchr/testify/assert"}
+2025-06-11T16:26:51.702+0530	INFO	utgenv2/injector.go:129	Uninstalling library: is
+2025-06-11T16:26:51.702+0530	INFO	utgenv2/injector.go:158	Uninstalling library with command: go mod edit -droprequire is && go mod tidy
+2025-06-11T16:26:51.702+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod edit -droprequire is && go mod tidy", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:51.740+0530	INFO	utgenv2/injector.go:129	Uninstalling library: install
+2025-06-11T16:26:51.740+0530	INFO	utgenv2/injector.go:158	Uninstalling library with command: go mod edit -droprequire install && go mod tidy
+2025-06-11T16:26:51.740+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod edit -droprequire install && go mod tidy", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:51.760+0530	INFO	utgenv2/injector.go:129	Uninstalling library: run:
+2025-06-11T16:26:51.760+0530	INFO	utgenv2/injector.go:158	Uninstalling library with command: go mod edit -droprequire run: && go mod tidy
+2025-06-11T16:26:51.761+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod edit -droprequire run: && go mod tidy", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:51.768+0530	WARN	utgenv2/injector.go:163	Failed to uninstall library: go mod edit -droprequire run: && go mod tidy	{"error": "exit status 1"}
+2025-06-11T16:26:51.768+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"e04a4025-5cb3-4297-b149-fbfaf7b81741","type":"testGeneration","timestamp":1749639411768131000,"eventDetails":{"iteration":4,"number":2,"comment":"// TestCheckGoogle_GetGoogleReturnsSuccess_475 tests the scenario where the GetGoogle method\n// of the HTTPClienter interface returns a successful response. It checks if the service\n// correctly prints the response.\n","testDetails":"func TestCheckGoogle_GetGoogleReturnsSuccess_475(t *testing.T) {\n\t// Arrange\n\tmockClient := new(serviceMocks.HTTPClienter)\n\texpectedResponse := \"mock google data\"\n\tmockClient.On(\"GetGoogle\").Return(expectedResponse, nil)\n\n\tserviceInstance := &Service{\n\t\tCl: mockClient,\n\t}\n\n\t// Capture standard output\n\toldStdout := os.Stdout\n\tr, w, _ := os.Pipe()\n\tos.Stdout = w\n\n\t// Act\n\tserviceInstance.CheckGoogle()\n\n\t// Restore standard output and read captured content\n\tw.Close()\n\tos.Stdout = oldStdout\n\tvar buf bytes.Buffer\n\t_, errCopy := io.Copy(&buf, r)\n\trequire.NoError(t, errCopy, \"Failed to copy output from pipe\")\n\toutput := buf.String()\n\n\t// Assert\n\tmockClient.AssertExpectations(t)\n\texpectedOutput := fmt.Sprintf(\"Google Response: %s\\n\", expectedResponse)\n\tassert.Equal(t, expectedOutput, output, \"The printed response message should match the expected format.\")\n}\n","importDetails":"import (\n\t\"bytes\"\n\t\"fmt\"\n\t\"io\"\n\t\"os\"\n\t\"testing\"\n\n\tserviceMocks \"github.com/Sarthak160/go-client/mocks/service\"\n\t\"github.com/stretchr/testify/assert\"\n\t\"github.com/stretchr/testify/mock\"\n\t\"github.com/stretchr/testify/require\"\n)\n","packageDetails":"go get github.com/stretchr/testify/assert github.com/stretchr/testify/mock github.com/stretchr/testify/require\n","language":"go"}}}
+2025-06-11T16:26:51.774+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:26:51.784+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:26:51.784+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:26:51.801+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:26:51.823+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:26:51.831+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:26:51.831+0530	INFO	utgenv2/injector.go:78	Installing library: go get github.com/stretchr/testify/assert github.com/stretchr/testify/mock github.com/stretchr/testify/require
+2025-06-11T16:26:51.831+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go get github.com/stretchr/testify/assert github.com/stretchr/testify/mock github.com/stretchr/testify/require", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:51.948+0530	INFO	utgenv2/gen.go:1261	New Libraries Event	{"event": {"id":"9d0640ae-a29b-41e5-b4ad-ea4453bd5dad","type":"newLibraries","timestamp":1749639411948352000,"eventDetails":{"libraries":"New Libraries Installed: github.com/stretchr/testify/assert","iteration":4,"testNumber":2}}}
+2025-06-11T16:26:51.948+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"9a6ecfce-cd48-494c-8d6c-434dc64bf9bb","type":"testRun","timestamp":1749639411948428000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":4,"testNumber":2}}}
+2025-06-11T16:26:51.948+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:26:52.804+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"113d9c56-0f37-4780-84ac-cf854ff6a450","type":"testRunFailure","timestamp":1749639412804096000,"eventDetails":{"iteration":4,"errorMsg":"","testNumber":2}}}
+2025-06-11T16:26:52.804+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:26:52.804+0530	INFO	utgenv2/injector.go:129	Uninstalling library: github.com/stretchr/testify/assert
+2025-06-11T16:26:52.804+0530	INFO	utgenv2/injector.go:135	Skipping uninstallation of required package:	{"package": "github.com/stretchr/testify/assert"}
+2025-06-11T16:26:52.805+0530	INFO	utgenv2/gen.go:799	Run Summary Event	{"event": {"id":"fb0cdf52-f4c8-4f28-ad81-73070ca27339","type":"runSummary","timestamp":1749639412805499000,"eventDetails":{"message":"Tests generated in Session 89a55363-78c1-428f-b35d-001bbfb9dbfe in iteration 4","testAdded":0,"testRejected":2,"buildFailure":2,"noCovIncrease":0,"coverageIncreased":0,"isCoverageIncreased":false,"testFilePath":"/Users/sarthak/Keploy/utg/go-client/service/service_test.go","sessionId":"","linesCovered":0,"totalLines":0}}}
+
+<=========================================>
+Tests generated in Session
++-------------------------------+-------------------------------+-------------------------------+
+|       Total Test Cases        |       Test Cases Passed       |       Test Cases Failed       |
++-------------------------------+-------------------------------+-------------------------------+
+|                               |                               |                               |
+|               2               |               0               |               2               |
+|                               |                               |                               |
++-------------------------------+-------------------------------+-------------------------------+
+Discarded tests in session
++------------------------------------------+------------------------------------------+
+|              Build failures              |            No Coverage output            |
++------------------------------------------+------------------------------------------+
+|                                          |                                          |
+|                    2                     |                    0                     |
+|                                          |                                          |
++------------------------------------------+------------------------------------------+
+<=========================================>
+2025-06-11T16:26:53.069+0530	INFO	utgenv2/gen.go:482	Iteration Event	{"event": {"id":"409df861-4f94-4ac5-8438-b1d7b5a8bd51","type":"iteration","timestamp":1749639413069520000,"eventDetails":{"iteration":5}}}
+2025-06-11T16:26:53.069+0530	INFO	utgenv2/gen.go:489	[UTG_PROGRESS] iteration-5/5
+2025-06-11T16:26:53.069+0530	INFO	utgenv2/gen.go:493	Event Iteration 5
+Current Coverage: %!f(string=0.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+Desired Coverage: %!f(string=80.000000)% for file "/Users/sarthak/Keploy/utg/go-client/service/service.go"
+2025-06-11T16:26:53.074+0530	INFO	utgenv2/gen.go:157	Successfully appended failed tests to file	{"file": "/var/folders/_g/s7yplq9x62s2qv4rmdk7z8qh0000gn/T/keploy-utg/failed_tests_session_89a55363-78c1-428f-b35d-001bbfb9dbfe.yaml"}
+2025-06-11T16:26:53.074+0530	INFO	utgenv2/gen.go:537	Libraries Event	{"event": {"id":"796ccb9e-a3b6-477e-b48e-239a662b5244","type":"libraries","timestamp":1749639413074556000,"eventDetails":{"iteration":5,"message":"Checking for libraries used at /Users/sarthak/Keploy/utg/go-client"}}}
+2025-06-11T16:26:53.094+0530	INFO	utgenv2/gen.go:598	Functions Event	{"event": {"id":"5038aae4-ad52-40c7-b65d-fca46553b79c","type":"functions","timestamp":1749639413094478000,"eventDetails":{"iteration":5,"message":"Detecting Functions of /Users/sarthak/Keploy/utg/go-client/service/service.go"}}}
+2025-06-11T16:26:53.094+0530	INFO	utgenv2/gen.go:614	Test Generation Info Event	{"event": {"id":"6f1e0344-b983-46ee-bf9d-303d62680869","type":"testGenerationInfo","timestamp":1749639413094635000,"eventDetails":{"message":"Generating Test cases for /Users/sarthak/Keploy/utg/go-client/service/service.go with go test ","iteration":5,"library":"go test"}}}
+Generating Tests...
+2025-06-11T16:28:41.872+0530	WARN	utgenv2/utils.go:519	Failed to unmarshal YAML for test details. Attempting to unmarshal test cases individually.	{"error": "yaml: line 12: mapping values are not allowed in this context"}
+2025-06-11T16:28:41.875+0530	WARN	utgenv2/utils.go:558	Failed to unmarshal individual test case	{"error": "yaml: line 58: found character that cannot start any token", "testYaml": "\n- test_behavior: |\n    TestCheckGoogle_GetGoogleReturnsSuccess tests the scenario where the GetGoogle method\n    on the HTTPClienter interface returns a successful response. It verifies that the service\n    correctly prints the response message to standard output. This covers lines 13, 14, 18, 19 of the original source.\n  test_name: |\n    TestCheckGoogle_GetGoogleReturnsSuccess_502\n  comment: |\n    // TestCheckGoogle_GetGoogleReturnsSuccess_502 simulates GetGoogle returning a successful response.\n    // It checks if the response is printed to stdout as expected.\n    // This test covers the success path in CheckGoogle.\n  test_code: |\n    func TestCheckGoogle_GetGoogleReturnsSuccess_502(t *testing.T) {\n    \t// Arrange\n    \tmockClient := serviceMocks.NewHTTPClienter(t)\n    \texpectedResponse := \"mock google data\"\n    \tmockClient.On(\"GetGoogle\").Return(expectedResponse, nil)\n\n    \tserviceInstance := NewService(mockClient) // Use the constructor with the mock\n\n    \t// Capture standard output\n    \toldStdout := os.Stdout\n    \tr, w, _ := os.Pipe()\n    \tos.Stdout = w\n\n    \t// Act\n    \tserviceInstance.CheckGoogle()\n\n    \t// Restore standard output and read captured content\n    \tw.Close()\n    \tos.Stdout = oldStdout\n    \tvar buf bytes.Buffer\n    \t_, errCopy := io.Copy(&buf, r)\n    \trequire.NoError(t, errCopy, \"Failed to copy output from pipe\")\n    \toutput := buf.String()\n\n    \t// Assert\n    \tmockClient.AssertExpectations(t)\n    \texpectedOutput := fmt.Sprintf(\"Google Response: %s\\n\", expectedResponse)\n    \tassert.Equal(t, expectedOutput, output, \"The printed response message should match the expected format.\")\n    }\n  new_imports_code: |\n    import (\n    \t\"bytes\"\n    \t\"fmt\"\n    \t\"io\"\n    \t\"os\"\n    \t\"testing\"\n\n    \tserviceMocks \"github.com/Sarthak160/go-client/mocks/service\"\n    \t\"github.com/stretchr/testify/assert\"\n    \t\"github.com/stretchr/testify/require\"\n    )\n  library_installation_code: |\n    go get github.com/stretchr/testify/assert\n    go get github.com/stretchr/testify/require\n    # For mock generation, ensure mockery is installed (see details in the previous test case).\n```"}
+2025-06-11T16:28:41.875+0530	INFO	utgenv2/gen.go:656	Validating new generated tests one by one
+2025-06-11T16:28:41.875+0530	INFO	utgenv2/gen.go:681	Test Generation Event	{"event": {"id":"43cc3241-0e54-4f13-a7a4-5732c8494668","type":"testGeneration","timestamp":1749639521875990000,"eventDetails":{"iteration":5,"number":1,"comment":"// TestCheckGoogle_GetGoogleReturnsError_731 simulates GetGoogle returning an error.\n// It checks if the error is printed to stdout as expected.\n// This test covers the error handling path in CheckGoogle.\n","testDetails":"func TestCheckGoogle_GetGoogleReturnsError_731(t *testing.T) {\n\t// Arrange\n\tmockClient := serviceMocks.NewHTTPClienter(t)\n\texpectedError := fmt.Errorf(\"simulated network error\")\n\tmockClient.On(\"GetGoogle\").Return(\"\", expectedError)\n\n\tserviceInstance := NewService(mockClient) // Use the constructor with the mock\n\n\t// Capture standard output\n\toldStdout := os.Stdout\n\tr, w, _ := os.Pipe()\n\tos.Stdout = w\n\n\t// Act\n\tserviceInstance.CheckGoogle()\n\n\t// Restore standard output and read captured content\n\tw.Close()\n\tos.Stdout = oldStdout\n\tvar buf bytes.Buffer\n\t_, errCopy := io.Copy(&buf, r)\n\trequire.NoError(t, errCopy, \"Failed to copy output from pipe\")\n\toutput := buf.String()\n\n\t// Assert\n\tmockClient.AssertExpectations(t)\n\texpectedOutput := fmt.Sprintf(\"Error: %v\\n\", expectedError)\n\tassert.Equal(t, expectedOutput, output, \"The printed error message should match the expected format.\")\n}\n","importDetails":"import (\n\t\"bytes\"\n\t\"fmt\"\n\t\"io\"\n\t\"os\"\n\t\"testing\"\n\n\tserviceMocks \"github.com/Sarthak160/go-client/mocks/service\"\n\t\"github.com/stretchr/testify/assert\"\n\t\"github.com/stretchr/testify/require\"\n)\n","packageDetails":"go get github.com/stretchr/testify/assert\ngo get github.com/stretchr/testify/require\n# For mock generation, ensure mockery is installed:\n# go install github.com/vektra/mockery/v2@latest\n# To generate/update mocks for HTTPClienter interface in service package (service.go):\n# mockery --name HTTPClienter --dir ./service --output ./mocks/service --outpkg service --case underscore\n# (The import alias \"serviceMocks\" will then be used for \"github.com/Sarthak160/go-client/mocks/service\")\n","language":"go"}}}
+2025-06-11T16:28:41.922+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:28:41.948+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:28:41.948+0530	INFO	golang/utils.go:233	Using mockery binary at	{"path": "/Users/sarthak/go/bin/mockery"}
+2025-06-11T16:28:41.975+0530	INFO	golang/utils.go:413	Mockery command completed
+2025-06-11T16:28:41.997+0530	INFO	golang/utils.go:233	Using goimports binary at	{"path": "/Users/sarthak/go/bin/goimports"}
+2025-06-11T16:28:42.005+0530	INFO	golang/utils.go:431	Goimports command completed
+2025-06-11T16:28:42.006+0530	INFO	utgenv2/injector.go:78	Installing library: go get github.com/stretchr/testify/assert
+2025-06-11T16:28:42.006+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go get github.com/stretchr/testify/assert", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:43.101+0530	INFO	utgenv2/injector.go:78	Installing library: go get github.com/stretchr/testify/require
+2025-06-11T16:28:43.102+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go get github.com/stretchr/testify/require", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:43.758+0530	INFO	utgenv2/injector.go:78	Installing library: # For mock generation, ensure mockery is installed:
+2025-06-11T16:28:43.758+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "# For mock generation, ensure mockery is installed:", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:43.762+0530	INFO	utgenv2/injector.go:78	Installing library: # go install github.com/vektra/mockery/v2@latest
+2025-06-11T16:28:43.762+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "# go install github.com/vektra/mockery/v2@latest", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:43.765+0530	INFO	utgenv2/injector.go:78	Installing library: # To generate/update mocks for HTTPClienter interface in service package (service.go):
+2025-06-11T16:28:43.765+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "# To generate/update mocks for HTTPClienter interface in service package (service.go):", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:43.767+0530	INFO	utgenv2/injector.go:78	Installing library: # mockery --name HTTPClienter --dir ./service --output ./mocks/service --outpkg service --case underscore
+2025-06-11T16:28:43.767+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "# mockery --name HTTPClienter --dir ./service --output ./mocks/service --outpkg service --case underscore", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:43.770+0530	INFO	utgenv2/injector.go:78	Installing library: # (The import alias "serviceMocks" will then be used for "github.com/Sarthak160/go-client/mocks/service")
+2025-06-11T16:28:43.770+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "# (The import alias \"serviceMocks\" will then be used for \"github.com/Sarthak160/go-client/mocks/service\")", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:43.772+0530	INFO	utgenv2/gen.go:1261	New Libraries Event	{"event": {"id":"6d79b05f-6b65-43a2-aab9-b937c98045ef","type":"newLibraries","timestamp":1749639523772629000,"eventDetails":{"libraries":"New Libraries Installed: github.com/stretchr/testify/assert, github.com/stretchr/testify/require, mock, install, generate/update, --name, import","iteration":5,"testNumber":1}}}
+2025-06-11T16:28:43.772+0530	INFO	utgenv2/gen.go:1280	Test Run Event	{"event": {"id":"34122f10-3d68-41d7-8100-3b553bcc74ea","type":"testRun","timestamp":1749639523772679000,"eventDetails":{"runCommand":"go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'","iteration":5,"testNumber":1}}}
+2025-06-11T16:28:43.772+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:45.481+0530	INFO	utgenv2/gen.go:1298	Test Run Status Event	{"event": {"id":"fc5bbbea-4dbb-42f8-9f6a-4327587bf956","type":"testRunFailure","timestamp":1749639525481446000,"eventDetails":{"iteration":5,"errorMsg":"","testNumber":1}}}
+2025-06-11T16:28:45.481+0530	INFO	utgenv2/gen.go:1301	Test Run Failed
+2025-06-11T16:28:45.482+0530	INFO	utgenv2/injector.go:129	Uninstalling library: github.com/stretchr/testify/assert
+2025-06-11T16:28:45.482+0530	INFO	utgenv2/injector.go:135	Skipping uninstallation of required package:	{"package": "github.com/stretchr/testify/assert"}
+2025-06-11T16:28:45.482+0530	INFO	utgenv2/injector.go:129	Uninstalling library: github.com/stretchr/testify/require
+2025-06-11T16:28:45.482+0530	INFO	utgenv2/injector.go:135	Skipping uninstallation of required package:	{"package": "github.com/stretchr/testify/require"}
+2025-06-11T16:28:45.482+0530	INFO	utgenv2/injector.go:129	Uninstalling library: mock
+2025-06-11T16:28:45.482+0530	INFO	utgenv2/injector.go:158	Uninstalling library with command: go mod edit -droprequire mock && go mod tidy
+2025-06-11T16:28:45.482+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod edit -droprequire mock && go mod tidy", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:45.525+0530	INFO	utgenv2/injector.go:129	Uninstalling library: install
+2025-06-11T16:28:45.525+0530	INFO	utgenv2/injector.go:158	Uninstalling library with command: go mod edit -droprequire install && go mod tidy
+2025-06-11T16:28:45.525+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod edit -droprequire install && go mod tidy", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:45.550+0530	INFO	utgenv2/injector.go:129	Uninstalling library: generate/update
+2025-06-11T16:28:45.550+0530	INFO	utgenv2/injector.go:158	Uninstalling library with command: go mod edit -droprequire generate/update && go mod tidy
+2025-06-11T16:28:45.550+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod edit -droprequire generate/update && go mod tidy", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:45.571+0530	INFO	utgenv2/injector.go:129	Uninstalling library: --name
+2025-06-11T16:28:45.571+0530	INFO	utgenv2/injector.go:158	Uninstalling library with command: go mod edit -droprequire --name && go mod tidy
+2025-06-11T16:28:45.572+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod edit -droprequire --name && go mod tidy", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:45.580+0530	WARN	utgenv2/injector.go:163	Failed to uninstall library: go mod edit -droprequire --name && go mod tidy	{"error": "exit status 1"}
+2025-06-11T16:28:45.580+0530	INFO	utgenv2/injector.go:129	Uninstalling library: import
+2025-06-11T16:28:45.580+0530	INFO	utgenv2/injector.go:158	Uninstalling library with command: go mod edit -droprequire import && go mod tidy
+2025-06-11T16:28:45.580+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod edit -droprequire import && go mod tidy", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+2025-06-11T16:28:45.601+0530	INFO	utgenv2/gen.go:799	Run Summary Event	{"event": {"id":"21034c31-e1e6-4923-98f0-52495c35af25","type":"runSummary","timestamp":1749639525601445000,"eventDetails":{"message":"Tests generated in Session 89a55363-78c1-428f-b35d-001bbfb9dbfe in iteration 5","testAdded":0,"testRejected":1,"buildFailure":1,"noCovIncrease":0,"coverageIncreased":0,"isCoverageIncreased":false,"testFilePath":"/Users/sarthak/Keploy/utg/go-client/service/service_test.go","sessionId":"","linesCovered":0,"totalLines":0}}}
+
+<=========================================>
+Tests generated in Session
++-------------------------------+-------------------------------+-------------------------------+
+|       Total Test Cases        |       Test Cases Passed       |       Test Cases Failed       |
++-------------------------------+-------------------------------+-------------------------------+
+|                               |                               |                               |
+|               1               |               0               |               1               |
+|                               |                               |                               |
++-------------------------------+-------------------------------+-------------------------------+
+Discarded tests in session
++------------------------------------------+------------------------------------------+
+|              Build failures              |            No Coverage output            |
++------------------------------------------+------------------------------------------+
+|                                          |                                          |
+|                    1                     |                    0                     |
+|                                          |                                          |
++------------------------------------------+------------------------------------------+
+<=========================================>
+2025-06-11T16:28:45.849+0530	INFO	utgenv2/gen.go:866	uploading UT report	{"req": {"appId":"go-client","coverage":{"fileCoverage":null,"totalCoverage":"0.000000","loc":{"total":5,"covered":0}},"keploy":{"sessionID":"89a55363-78c1-428f-b35d-001bbfb9dbfe","utStats":{"linesCovered":0,"passedTests":0,"failedTests":9,"noCoverageTests":0}}}}
+2025-06-11T16:28:47.088+0530	INFO	utgenv2/analytics.go:80	UT Report sent successfully
+2025-06-11T16:28:47.090+0530	INFO	golang/golang.go:242	Scanning for used mocks...
+2025-06-11T16:28:47.093+0530	INFO	golang/golang.go:356	Scanning for unused mocks...
+2025-06-11T16:28:47.093+0530	INFO	golang/golang.go:376	Unused mock cleanup complete
+For File "/Users/sarthak/Keploy/utg/go-client/service/service.go" Reached maximum iteration limit without achieving desired coverage. Current Coverage: %!f(string=0.000000)%
+2025-06-11T16:28:47.093+0530	INFO	coverage/coverage.go:48	Running test command to generate coverage report	{"cmd": "go mod tidy && go test -tags=test -v ./... -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' && $(go env GOPATH)/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | $(go env GOPATH)/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'"}
+[KRunning tests... Please wait.2025-06-11T16:28:47.093+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v ./... -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' && $(go env GOPATH)/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | $(go env GOPATH)/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+[K2025-06-11T16:28:52.094+0530	INFO	coverage/coverage.go:89	Test command completed in 2.16s
+2025-06-11T16:28:52.096+0530	WARN	utgenv2/gen.go:2040	Error running initial coverage command	{"error": "exit status 1"}
+2025-06-11T16:28:52.096+0530	INFO	utgenv2/gen.go:2044	Initial root coverage failed.
+2025-06-11T16:28:52.096+0530	INFO	utgenv2/gen.go:2047	Attempting package-wise coverage.
+2025-06-11T16:28:52.156+0530	INFO	utgenv2/gen.go:1674	Coverage attempt #1 for package at github.com/Sarthak160/go-client/service
+2025-06-11T16:28:52.156+0530	INFO	coverage/coverage.go:48	Running test command to generate coverage report	{"cmd": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'"}
+[KRunning tests... Please wait.2025-06-11T16:28:52.156+0530	INFO	util/cmd_others.go:43	Running command on unix	{"command": "go mod tidy && go test -tags=test -v -coverprofile='/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' github.com/Sarthak160/go-client/service && /Users/sarthak/go/bin/gocov convert '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.out' | /Users/sarthak/go/bin/gocov-xml > '/tmp/Users/sarthak/Keploy/utg/go-client/coverage.xml'", "dir": "/Users/sarthak/Keploy/utg/go-client"}
+[K2025-06-11T16:28:57.158+0530	INFO	coverage/coverage.go:89	Test command completed in 0.43s
+2025-06-11T16:28:57.158+0530	INFO	utgenv2/gen.go:933	Summary Event	{"event": {"id":"429e9fc6-2620-475d-8f33-16229488efd9","type":"summary","timestamp":1749639537158876000,"eventDetails":{"message":"Tests generated in Session 89a55363-78c1-428f-b35d-001bbfb9dbfe","testAdded":0,"testRejected":9,"buildFailure":9,"noCovIncrease":0,"coverageIncreased":0,"isCoverageIncreased":false,"testFilePath":"/Users/sarthak/Keploy/utg/go-client/service/service_test.go","sessionId":"89a55363-78c1-428f-b35d-001bbfb9dbfe","linesCovered":0,"totalLines":5}}}
+
+<=========================================>
+COMPLETE TEST GENERATE SUMMARY
+Total Test Summary
++-------------------------------+-------------------------------+-------------------------------+
+|       Total Test Cases        |       Test Cases Passed       |       Test Cases Failed       |
++-------------------------------+-------------------------------+-------------------------------+
+|                               |                               |                               |
+|               9               |               0               |               9               |
+|                               |                               |                               |
++-------------------------------+-------------------------------+-------------------------------+
+Discarded Cases Summary
++------------------------------------------+------------------------------------------+
+|              Build failures              |            No Coverage output            |
++------------------------------------------+------------------------------------------+
+|                                          |                                          |
+|                    9                     |                    0                     |
+|                                          |                                          |
++------------------------------------------+------------------------------------------+
+<=========================================>
+2025-06-11T16:28:57.160+0530	INFO	utgenv2/gen.go:295	No tests generated, removing the generated test file
+Signal received: interrupt, canceling context...
+2025-06-11T17:33:45.161+0530	INFO	server/server.go:59	Received termination signal, shutting down gracefully...
+2025-06-11T17:33:45.163+0530	INFO	server/server.go:69	Server exited gracefully

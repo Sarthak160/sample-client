@@ -1,0 +1,233 @@
+Iteration-1
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_Success_123(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.HTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("Google is reachable", nil)
+
+    svc := &Service{Cl: mockHTTPClient}
+
+    // Act
+    svc.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertExpectations(t)
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_Error_456(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.HTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("", fmt.Errorf("network error"))
+
+    svc := &Service{Cl: mockHTTPClient}
+
+    // Act
+    svc.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertExpectations(t)
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+Iteration-2
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_Success_789(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.HTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("Google is reachable", nil)
+
+    svc := &Service{Cl: mockHTTPClient}
+
+    // Act
+    svc.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertExpectations(t)
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_Error_987(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.HTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("", fmt.Errorf("network error"))
+
+    svc := &Service{Cl: mockHTTPClient}
+
+    // Act
+    svc.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertExpectations(t)
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+Iteration-4
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_Success_369(t *testing.T) {
+    // Arrange
+    mockClient := new(serviceMocks.Client) // serviceMocks.Client is the mock for service.Client interface
+    expectedResponse := "Successfully fetched Google!"
+    mockClient.On("GetGoogle").Return(expectedResponse, nil)
+
+    // Capture standard output
+    oldStdout := os.Stdout
+    r, w, _ := os.Pipe()
+    os.Stdout = w
+
+    // Initialize service with the mock client.
+    // This assumes the Service struct's Cl field is of type service.Client (interface).
+    s := &Service{Cl: mockClient}
+
+    // Act
+    s.CheckGoogle()
+
+    // Restore standard output and read captured output
+    if err := w.Close(); err != nil {
+        t.Fatalf("Failed to close writer: %v", err)
+    }
+    os.Stdout = oldStdout
+    var buf bytes.Buffer
+    if _, err := io.Copy(&buf, r); err != nil {
+        t.Fatalf("Failed to copy output: %v", err)
+    }
+    output := buf.String()
+
+    // Assert
+    assert.Contains(t, output, "Google Response: "+expectedResponse, "Output should contain the success message and response")
+    mockClient.AssertExpectations(t)
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_Error_721(t *testing.T) {
+    // Arrange
+    mockClient := new(serviceMocks.Client) // serviceMocks.Client is the mock for service.Client interface
+    expectedError := errors.New("failed to fetch Google")
+    mockClient.On("GetGoogle").Return("", expectedError)
+
+    // Capture standard output
+    oldStdout := os.Stdout
+    r, w, _ := os.Pipe()
+    os.Stdout = w
+
+    // Initialize service with the mock client.
+    // This assumes the Service struct's Cl field is of type service.Client (interface).
+    s := &Service{Cl: mockClient}
+
+    // Act
+    s.CheckGoogle()
+
+    // Restore standard output and read captured output
+    if err := w.Close(); err != nil {
+        t.Fatalf("Failed to close writer: %v", err)
+    }
+    os.Stdout = oldStdout
+    var buf bytes.Buffer
+    if _, err := io.Copy(&buf, r); err != nil {
+        t.Fatalf("Failed to copy output: %v", err)
+    }
+    output := buf.String()
+
+    // Assert
+    assert.Contains(t, output, "Error: "+expectedError.Error(), "Output should contain the error message")
+    mockClient.AssertExpectations(t)
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+Iteration-5
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+	"bytes"
+	"io"
+	"os"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	serviceMocks "github.com/Sarthak160/go-client/mocks/service" 
+)
+
+Required Library Installation
+go get github.com/stretchr/testify/assert
+# mockery command to generate mocks (run from module root):
+# mockery --name HTTPClientInterface --dir ./service --output ./mocks/service --inpackage=false
+
+Test Implementation:
+func TestCheckGoogle_Success_444(t *testing.T) {
+	// Arrange
+	mockClient := new(serviceMocks.HTTPClientInterface)
+	expectedResponse := "Successfully fetched Google!"
+	mockClient.On("GetGoogle").Return(expectedResponse, nil)
+
+	s := &Service{Cl: mockClient}
+
+	// Capture standard output
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	// Act
+	s.CheckGoogle()
+
+	// Restore standard output and read captured output
+	if err := w.Close(); err != nil {
+		t.Fatalf("Failed to close writer: %v", err)
+	}
+	os.Stdout = oldStdout
+	var buf bytes.Buffer
+	if _, err := io.Copy(&buf, r); err != nil {
+		t.Fatalf("Failed to copy output: %v", err)
+	}
+	output := buf.String()
+
+	// Assert
+	assert.Contains(t, output, "Google Response: "+expectedResponse+"\n", "Output should contain the success message and response")
+	mockClient.AssertExpectations(t)
+}
+
+
+-------------------------------------------------
+

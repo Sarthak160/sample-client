@@ -1,0 +1,393 @@
+Iteration-1
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+  "testing"
+  "fmt"
+  clientMocks "github.com/Sarthak160/go-client/mocks/client"
+  "github.com/stretchr/testify/mock"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify
+
+Test Implementation:
+func TestCheckGoogle_Error_123(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.HTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("", fmt.Errorf("mock error"))
+
+    service := &Service{
+        Cl: mockHTTPClient,
+    }
+
+    // Act
+    service.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertExpectations(t)
+}
+
+
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+  "testing"
+  clientMocks "github.com/Sarthak160/go-client/mocks/client"
+  "github.com/stretchr/testify/mock"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify
+
+Test Implementation:
+func TestCheckGoogle_Success_456(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.HTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("mock response", nil)
+
+    service := &Service{
+        Cl: mockHTTPClient,
+    }
+
+    // Act
+    service.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertExpectations(t)
+}
+
+
+-------------------------------------------------
+
+Iteration-2
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+  "fmt"
+  "testing"
+  clientMocks "github.com/Sarthak160/go-client/mocks/client"
+  "github.com/stretchr/testify/mock"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify
+
+Test Implementation:
+func TestCheckGoogle_Error_789(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.HTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("", fmt.Errorf("mock error"))
+
+    service := &Service{
+        Cl: mockHTTPClient,
+    }
+
+    // Act
+    service.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertExpectations(t)
+}
+
+
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+  "fmt"
+  "testing"
+  clientMocks "github.com/Sarthak160/go-client/mocks/client"
+  "github.com/stretchr/testify/mock"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify
+
+Test Implementation:
+func TestCheckGoogle_Success_890(t *testing.T) {
+    // Arrange
+    mockHTTPClient := new(clientMocks.HTTPClient)
+    mockHTTPClient.On("GetGoogle").Return("mock response", nil)
+
+    service := &Service{
+        Cl: mockHTTPClient,
+    }
+
+    // Act
+    service.CheckGoogle()
+
+    // Assert
+    mockHTTPClient.AssertExpectations(t)
+}
+
+
+-------------------------------------------------
+
+Iteration-3
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_GetGoogleReturnsError_731(t *testing.T) {
+	// Arrange
+	mockHTTPClient := new(clientMocks.HTTPClient)
+	expectedError := fmt.Errorf("mock network error")
+	mockHTTPClient.On("GetGoogle").Return("", expectedError)
+
+	// Assumption: Service.Cl is an interface type (e.g. client.HTTPClient)
+	// allowing mockHTTPClient to be assigned.
+	serviceInstance := &Service{
+		Cl: mockHTTPClient,
+	}
+
+	// Capture standard output
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	// Act
+	serviceInstance.CheckGoogle()
+
+	// Restore standard output and read captured content
+	w.Close()
+	os.Stdout = oldStdout
+	var buf bytes.Buffer
+	_, errCopy := io.Copy(&buf, r)
+	if errCopy != nil {
+		t.Fatalf("Failed to copy output: %v", errCopy)
+	}
+	output := buf.String()
+
+	// Assert
+	mockHTTPClient.AssertExpectations(t)
+	expectedOutput := fmt.Sprintf("Error: %v\n", expectedError)
+	assert.Equal(t, expectedOutput, output, "The printed error message should match the expected format.")
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Test Implementation:
+func TestCheckGoogle_GetGoogleReturnsSuccess_824(t *testing.T) {
+	// Arrange
+	mockHTTPClient := new(clientMocks.HTTPClient)
+	expectedResponse := "mock google data"
+	mockHTTPClient.On("GetGoogle").Return(expectedResponse, nil)
+
+	// Assumption: Service.Cl is an interface type (e.g. client.HTTPClient)
+	// allowing mockHTTPClient to be assigned.
+	serviceInstance := &Service{
+		Cl: mockHTTPClient,
+	}
+
+	// Capture standard output
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	// Act
+	serviceInstance.CheckGoogle()
+
+	// Restore standard output and read captured content
+	w.Close()
+	os.Stdout = oldStdout
+	var buf bytes.Buffer
+	_, errCopy := io.Copy(&buf, r)
+	if errCopy != nil {
+		t.Fatalf("Failed to copy output: %v", errCopy)
+	}
+	output := buf.String()
+
+	// Assert
+	mockHTTPClient.AssertExpectations(t)
+	expectedOutput := fmt.Sprintf("Google Response: %s\n", expectedResponse)
+	assert.Equal(t, expectedOutput, output, "The printed response message should match the expected format.")
+}
+
+
+Error Message:
+FAIL	github.com/Sarthak160/go-client/service [build failed]
+FAIL
+-------------------------------------------------
+
+Iteration-4
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"os"
+	"testing"
+
+	serviceMocks "github.com/Sarthak160/go-client/mocks/service"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/require"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify/assert github.com/stretchr/testify/mock github.com/stretchr/testify/require
+# mockery is used to generate mocks, ensure it's installed for development:
+# go install github.com/vektra/mockery/v2@latest
+# then run: mockery --name HTTPClienter --dir ./service --output ./mocks/service --outpkg serviceMocks
+
+Test Implementation:
+func TestCheckGoogle_GetGoogleReturnsError_391(t *testing.T) {
+	// Arrange
+	mockClient := new(serviceMocks.HTTPClienter)
+	expectedError := fmt.Errorf("simulated network error")
+	mockClient.On("GetGoogle").Return("", expectedError)
+
+	serviceInstance := &Service{
+		Cl: mockClient,
+	}
+
+	// Capture standard output
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	// Act
+	serviceInstance.CheckGoogle()
+
+	// Restore standard output and read captured content
+	w.Close()
+	os.Stdout = oldStdout
+	var buf bytes.Buffer
+	_, errCopy := io.Copy(&buf, r)
+	require.NoError(t, errCopy, "Failed to copy output from pipe")
+	output := buf.String()
+
+	// Assert
+	mockClient.AssertExpectations(t)
+	expectedOutput := fmt.Sprintf("Error: %v\n", expectedError)
+	assert.Equal(t, expectedOutput, output, "The printed error message should match the expected format.")
+}
+
+
+-------------------------------------------------
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"os"
+	"testing"
+
+	serviceMocks "github.com/Sarthak160/go-client/mocks/service"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/require"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify/assert github.com/stretchr/testify/mock github.com/stretchr/testify/require
+
+Test Implementation:
+func TestCheckGoogle_GetGoogleReturnsSuccess_475(t *testing.T) {
+	// Arrange
+	mockClient := new(serviceMocks.HTTPClienter)
+	expectedResponse := "mock google data"
+	mockClient.On("GetGoogle").Return(expectedResponse, nil)
+
+	serviceInstance := &Service{
+		Cl: mockClient,
+	}
+
+	// Capture standard output
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	// Act
+	serviceInstance.CheckGoogle()
+
+	// Restore standard output and read captured content
+	w.Close()
+	os.Stdout = oldStdout
+	var buf bytes.Buffer
+	_, errCopy := io.Copy(&buf, r)
+	require.NoError(t, errCopy, "Failed to copy output from pipe")
+	output := buf.String()
+
+	// Assert
+	mockClient.AssertExpectations(t)
+	expectedOutput := fmt.Sprintf("Google Response: %s\n", expectedResponse)
+	assert.Equal(t, expectedOutput, output, "The printed response message should match the expected format.")
+}
+
+
+-------------------------------------------------
+
+Iteration-5
+
+--------------------Test Case--------------------
+Import Statements:
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"os"
+	"testing"
+
+	serviceMocks "github.com/Sarthak160/go-client/mocks/service"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+)
+
+Required Library Installation
+go get github.com/stretchr/testify/assert
+go get github.com/stretchr/testify/require
+# For mock generation, ensure mockery is installed:
+# go install github.com/vektra/mockery/v2@latest
+# To generate/update mocks for HTTPClienter interface in service package (service.go):
+# mockery --name HTTPClienter --dir ./service --output ./mocks/service --outpkg service --case underscore
+# (The import alias "serviceMocks" will then be used for "github.com/Sarthak160/go-client/mocks/service")
+
+Test Implementation:
+func TestCheckGoogle_GetGoogleReturnsError_731(t *testing.T) {
+	// Arrange
+	mockClient := serviceMocks.NewHTTPClienter(t)
+	expectedError := fmt.Errorf("simulated network error")
+	mockClient.On("GetGoogle").Return("", expectedError)
+
+	serviceInstance := NewService(mockClient) // Use the constructor with the mock
+
+	// Capture standard output
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	// Act
+	serviceInstance.CheckGoogle()
+
+	// Restore standard output and read captured content
+	w.Close()
+	os.Stdout = oldStdout
+	var buf bytes.Buffer
+	_, errCopy := io.Copy(&buf, r)
+	require.NoError(t, errCopy, "Failed to copy output from pipe")
+	output := buf.String()
+
+	// Assert
+	mockClient.AssertExpectations(t)
+	expectedOutput := fmt.Sprintf("Error: %v\n", expectedError)
+	assert.Equal(t, expectedOutput, output, "The printed error message should match the expected format.")
+}
+
+
+-------------------------------------------------
+

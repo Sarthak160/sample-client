@@ -1,0 +1,13 @@
+name: First action
+
+on:
+  push:
+    tags: 
+      - 'v*.*.*'
+      - '!v*.*.*-rc*'
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "First action successfully finished!"

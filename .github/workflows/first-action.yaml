@@ -1,7 +1,6 @@
 name: First action
 
 on:
-  workflow_dispatch:
   push:
     tags: 
       - 'v*.*.*'
